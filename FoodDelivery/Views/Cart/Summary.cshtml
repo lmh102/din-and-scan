@@ -82,7 +82,7 @@
                                                 <h6 class="my-0">@details.MenuItem.Name</h6>
                                                 <small class="text-muted">Quantity: @details.Count</small>
                                             </div>
-                                            <span class="text-muted">$@(details.MenuItem.Price * details.Count)</span>
+                                            <span class="text-muted">@(details.MenuItem.Price * details.Count) VNĐ</span>
                                             @{ total += (details.MenuItem.Price * details.Count);}
                                         </li>
                                     }
@@ -93,12 +93,12 @@
                                                 <h6 class="my-0">Promo Code</h6>
                                                 <small class="text-muted">Quantity: @Model.Order.CouponCode</small>
                                             </div>
-                                            <span class="text-success">$@(total - Model.Order.OrderTotal)</span>
+                                            <span class="text-success">@(total - Model.Order.OrderTotal) VNĐ</span>
                                         </li>
                                     }
                                     <li class="list-group-item d-flex justify-content-between bg-light">
                                         <small class="text-info">Total (USD)</small>
-                                        <span class="text-success">$@(Model.Order.OrderTotal)</span>
+                                        <span class="text-success">@(Model.Order.OrderTotal) VNĐ</span>
                                     </li>
                                 </ul>
                             </div>
