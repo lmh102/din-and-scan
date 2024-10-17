@@ -9,7 +9,7 @@
 
             <div class="form-group row">
                 <div class="col-3">
-                    <label>Name</label>
+                    <label>Tên</label>
                 </div>
                 <div class="col-9">
                     <input asp-for="Order.PickupName" disabled class="form-control" />
@@ -58,7 +58,7 @@
         </div>
         <div class="col-lg-4 col-12">
             <h4 class="d-flex justify-content-between align-content-center mb-3">
-                <span class="text-muted">Order ID: </span>
+                <span class="text-muted">Mã Đơn Hàng: </span>
                 <span class="badge badge-secondary badge-pill">@Model.Order.Id</span>
             </h4>
             <ul class="list-group mb-3">
@@ -67,7 +67,7 @@
                     <li class="list-group-item d-flex justify-content-between">
                         <div>
                             <h6 class="my-0">@details.Name</h6>
-                            <small class="text-muted">Quantity : @details.Count</small>
+                            <small class="text-muted">Số lượng : @details.Count</small>
                         </div>
                         <span class="text-muted">@(details.Price * details.Count)</span>
                     </li>
@@ -76,21 +76,21 @@
                 {
                     <li class="list-group-item d-flex justify-content-between">
                         <div class="text-success">
-                            <h6 class="my-0">Promo Code</h6>
+                            <h6 class="my-0">Mã Khuyến Mãi</h6>
                             <small>@Model.Order.CouponCode</small>
                         </div>
                         <span class="text-success">@(Model.Order.OrderTotalOriginal - Model.Order.OrderTotal)</span>
                     </li>
                 }
                 <li class="list-group-item d-flex justify-content-between bg-light">
-                    <span class="text-info"> Total (USD)</span>
+                    <span class="text-info"> Tổng cộng </span>
                     <strong class="text-info">$@Model.Order.OrderTotal</strong>
                 </li>
 
             </ul>
             @if (Model.Order.Status.Equals(StaticDetail.StatusReady) && (User.IsInRole(StaticDetail.ManagerUser) || User.IsInRole(StaticDetail.FrontDeskUser)))
             {
-                <button type="submit" class="btn btn-success form-control"><i class="far fa-thumbs-up"></i> Confirm Pickup</button>
+                <button type="submit" class="btn btn-success form-control"><i class="far fa-thumbs-up"></i> Xác nhận nhận hàng</button>
             }
             else
             {

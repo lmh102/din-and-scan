@@ -41,14 +41,14 @@
                         {
                             <li class="nav-item dropdown text-white">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Content Management
+                                    Quản lý nội dung
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
-                                    <a class="dropdown-item" asp-action="Index" asp-controller="Category">Category</a>
-                                    <a class="dropdown-item" asp-action="Index" asp-controller="SubCategory">SubCategory</a>
-                                    <a class="dropdown-item" asp-action="Index" asp-controller="MenuItem">Menu Item</a>
-                                    <a class="dropdown-item" asp-action="Index" asp-controller="Coupon">Coupons</a>
-                                    <a class="dropdown-item" asp-action="Index" asp-controller="User">Users</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Category">Danh mục</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="SubCategory">Danh mục phụ</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="MenuItem">Món ăn</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Coupon">Mã khuyến mãi</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="User">Người dùng</a>
                                 </div>
                             </li>
                         }
@@ -56,7 +56,7 @@
                         {
                             <li class="nav-item">
                                 <a asp-action="OrderHistory" asp-controller="Order" class="nav-link">
-                                    Order History
+                                    Lịch sử đơn hàng
                                 </a>
                             </li>
                         }
@@ -64,20 +64,20 @@
                         {
                             <li class="nav-item dropdown text-white">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Order
+                                    Đơn hàng
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
                                     @if (User.IsInRole(StaticDetail.KitchenUser) || User.IsInRole(StaticDetail.ManagerUser))
                                     {
-                                        <a class="dropdown-item" asp-action="ManageOrder" asp-controller="Order">Manage Order</a>
+                                        <a class="dropdown-item" asp-action="ManageOrder" asp-controller="Order">Quản lý đơn hàng</a>
                                     }
                                     @if (User.IsInRole(StaticDetail.FrontDeskUser) || User.IsInRole(StaticDetail.ManagerUser))
                                     {
-                                        <a class="dropdown-item" asp-action="OrderPickup" asp-controller="Order">Order Pickup</a>
+                                        <a class="dropdown-item" asp-action="OrderPickup" asp-controller="Order">Đơn hàng lấy tại chỗ</a>
                                     }
                                     @if (User.IsInRole(StaticDetail.DeliveryUser) || User.IsInRole(StaticDetail.ManagerUser))
                                     {
-                                        <a class="dropdown-item" asp-action="OrderDelivery" asp-controller="Order">Order For Delivery</a>
+                                        <a class="dropdown-item" asp-action="OrderDelivery" asp-controller="Order">Đơn hàng giao hàng</a>
                                     }
                                 </div>
                             </li>
@@ -115,7 +115,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2019 - FoodDelivery - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2019 - FoodDelivery - <a asp-area="" asp-controller="Home" asp-action="Privacy">Chính sách bảo mật</a>
         </div>
     </footer>
 

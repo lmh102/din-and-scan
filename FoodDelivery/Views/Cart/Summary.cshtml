@@ -1,6 +1,6 @@
 ﻿@model FoodDelivery.Models.ViewModels.OrderDetailsCartViewModel
 @{
-    ViewData["Title"] = "Summary";
+    ViewData["Title"] = "Tóm Tắt Đơn Hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,10 +13,10 @@
             <div class="card">
                 <div class="card-header bg-dark text-light ml-0 row container">
                     <div class="col-6">
-                        <i class="fa fa-shopping-cart"></i> &nbsp; Order Summary
+                        <i class="fa fa-shopping-cart"></i> &nbsp; Tóm Tắt Đơn Hàng
                     </div>
                     <div class="col-6 text-right">
-                        <a asp-controller="Cart" asp-action="Index" class="btn btn-outline-info btn-sm">Back to Cart</a>
+                        <a asp-controller="Cart" asp-action="Index" class="btn btn-outline-info btn-sm">Quay Lại Giỏ Hàng</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -25,12 +25,12 @@
                             <div class="col-12 col-lg-6 pb-4">
                                 <div class="row">
                                     <h4 class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="text-info">PickUp Details:</span>
+                                        <span class="text-info">Thông Tin Nhận Hàng:</span>
                                     </h4>
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
-                                        <label>Name</label>
+                                        <label>Tên</label>
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="@Model.Order.PickupName" id="txtName" type="text" class="form-control" />
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
-                                        <label>Phone</label>
+                                        <label>Điện Thoại</label>
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="@Model.Order.PhoneNumber" id="txtPhone" type="text" class="form-control" />
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
-                                        <label>Date</label>
+                                        <label>Ngày</label>
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="@Model.Order.PickUpDate" id="datepicker" value="" type="text" class="form-control" />
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
-                                        <label>Time</label>
+                                        <label>Giờ</label>
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="@Model.Order.PickUpTime" id="timepicker" value="" type="text" class="form-control" />
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
-                                        <label>Additional Instructions: </label>
+                                        <label>Hướng Dẫn Thêm: </label>
                                     </div>
                                     <div class="col-9">
                                         <textarea asp-for="@Model.Order.Comments" style="height:100px;" class="form-control"></textarea>
@@ -71,33 +71,37 @@
                             </div>
                             <div class="col-12 col-lg-5 offset-lg-1">
                                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                                    <span class="text-info">Order Summary:</span>
+                                    <span class="text-info">Tóm Tắt Đơn Hàng:</span>
                                 </h4>
                                 <ul class="list-group mb-3">
-                                    @{ var total = 0.0;}
+                                    @{
+                                        var total = 0.0;
+                                    }
                                     @foreach (var details in Model.ListCart)
                                     {
                                         <li class="list-group-item d-flex justify-content-between">
                                             <div>
                                                 <h6 class="my-0">@details.MenuItem.Name</h6>
-                                                <small class="text-muted">Quantity: @details.Count</small>
+                                                <small class="text-muted">Số Lượng: @details.Count</small>
                                             </div>
                                             <span class="text-muted">$@(details.MenuItem.Price * details.Count)</span>
-                                            @{ total += (details.MenuItem.Price * details.Count);}
+                                            @{
+                                                total += (details.MenuItem.Price * details.Count);
+                                            }
                                         </li>
                                     }
                                     @if (Model.Order.CouponCode != null)
                                     {
                                         <li class="list-group-item d-flex justify-content-between">
                                             <div class="text-success">
-                                                <h6 class="my-0">Promo Code</h6>
-                                                <small class="text-muted">Quantity: @Model.Order.CouponCode</small>
+                                                <h6 class="my-0">Mã Giảm Giá</h6>
+                                                <small class="text-muted">Mã: @Model.Order.CouponCode</small>
                                             </div>
                                             <span class="text-success">$@(total - Model.Order.OrderTotal)</span>
                                         </li>
                                     }
                                     <li class="list-group-item d-flex justify-content-between bg-light">
-                                        <small class="text-info">Total (USD)</small>
+                                        <small class="text-info">Tổng (USD)</small>
                                         <span class="text-success">$@(Model.Order.OrderTotal)</span>
                                     </li>
                                 </ul>
@@ -108,7 +112,7 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-12 col-md-4 offset-md-8">
-                            <button type="submit" id="btnPlaceOrder" onclick="return validateInput()" value="PlaceOrder" class="btn btn-success form-control">Place Order</button>
+                            <button type="submit" id="btnPlaceOrder" onclick="return validateInput()" value="PlaceOrder" class="btn btn-success form-control">Đặt Hàng</button>
                         </div>
                     </div>
                 </div>
@@ -118,12 +122,12 @@
     else
     {
         <div>
-            No items added to the shopping cart...
+            Không có mặt hàng nào trong giỏ hàng...
         </div>
     }
 </form>
 
-@section Scripts{
+@section Scripts {
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
@@ -182,22 +186,22 @@
             var name = document.getElementById("txtName").value;
             var phone = document.getElementById("txtPhone").value;
             if (time.toString() == '') {
-                alert("Please select pickup time");
+                alert("Vui lòng chọn thời gian nhận hàng");
                 return false;
             }
             else {
                 if (dt.toString() == '') {
-                    alert("Please select pickup Date");
+                    alert("Vui lòng chọn ngày nhận hàng");
                     return false;
                 }
                 else {
                     if (name.toString() == '') {
-                        alert("Please enter pickup name");
+                        alert("Vui lòng nhập tên nhận hàng");
                         return false;
                     }
                     else {
                         if (phone.toString() == '') {
-                            alert("Please enter phone number");
+                            alert("Vui lòng nhập số điện thoại");
                             return false;
                         }
                         else {
@@ -209,5 +213,5 @@
         }
 
     </script>
-        
+
 }

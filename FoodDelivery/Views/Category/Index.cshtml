@@ -4,10 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <div class="row">
     <div class="col-6">
-        <h2 class="text-info">Category List</h2>
+        <h2 class="text-info">Danh Sách Danh Mục</h2>
     </div>
     <div class="col-6 text-right">
         <partial name="_CreateButtonPartial" />
@@ -26,7 +25,7 @@
                     @Html.DisplayNameFor(m => m.Description)
                 </th>
                 <th></th>
-                <th>Action</th>
+                <th>Hành Động</th>
             </tr>
             @foreach (var item in Model)
             {
@@ -46,6 +45,6 @@
     }
     else
     {
-        <p>No Categories</p>
+        <p>Không Có Danh Mục</p>
     }
 </div>

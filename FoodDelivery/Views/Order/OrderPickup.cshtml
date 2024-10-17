@@ -1,22 +1,22 @@
 ﻿@model FoodDelivery.Models.ViewModels.OrderListViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Chỉ Số";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <form method="get">
 
     <br />
-    <h2 class="text-info">Orders Ready for Pickup : </h2>
+    <h2 class="text-info">Đơn Hàng Sẵn Sàng Để Nhận:</h2>
     <div class="container border border-secondary" style="height:60px;">
         <div class="row container">
             <div class="col-11">
                 <div class="row" style="padding-top:10px">
                     <div class="col-4">
-                        @Html.Editor("searchName", new { htmlAttributes = new { @class = "form-control", @placeholder = "Name..." } })
+                        @Html.Editor("searchName", new { htmlAttributes = new { @class = "form-control", @placeholder = "Tên..." } })
                     </div>
                     <div class="col-4">
-                        @Html.Editor("searchPhone", new { htmlAttributes = new { @class = "form-control", @placeholder = "Phone..." } })
+                        @Html.Editor("searchPhone", new { htmlAttributes = new { @class = "form-control", @placeholder = "Số Điện Thoại..." } })
                     </div>
                     <div class="col-4">
                         @Html.Editor("searchEmail", new { htmlAttributes = new { @class = "form-control", @placeholder = "Email..." } })
@@ -32,7 +32,7 @@
             </div>
         </div>
 
-    </div>    
+    </div>
     <br />
     <div>
         @if (Model.Orders.Count() > 0)
@@ -55,7 +55,7 @@
                         @Html.DisplayNameFor(m => m.Orders[0].Order.OrderTotal)
                     </th>
                     <th>
-                        Total Items
+                        Tổng Số Mặt Hàng
                     </th>
                     <th>
                         @Html.DisplayNameFor(m => m.Orders[0].Order.Status)
@@ -91,47 +91,44 @@
                         </td>
                         <td>
                             <button type="button" class="btn btn-success ancorDetail" data-id="@item.Order.Id" data-toggle="modal">
-                                <i class="far fa-list-alt"></i> Details
+                                <i class="far fa-list-alt"></i> Chi Tiết
                             </button>
                         </td>
                     </tr>
                 }
             </table>
             <div page-model="@Model.PagingInfo" page-classes-enabled="true" page-class="btn border" page-class-normal="btn btn-light" page-class-selected="btn btn-info active" class="btn-group float-right">
-
             </div>
             <br />
         }
         else
         {
-            <p>No Order for Pickup</p>
+            <p>Không Có Đơn Hàng Để Nhận</p>
         }
     </div>
 </form>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog-centered modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-light ">
-                    <div class="col-10 offset-1">
-                        <center><h5 class="modal-title">Order Details</h5></center>
-                    </div>
-                    <div class="col-1">
-                        <button type="button" class="float-right btn-outline-secondary close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog-centered modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-light ">
+                <div class="col-10 offset-1">
+                    <center><h5 class="modal-title">Chi Tiết Đơn Hàng</h5></center>
                 </div>
-                <div class="modal-body justify-content-center" id="myModalContent">
-
+                <div class="col-1">
+                    <button type="button" class="float-right btn-outline-secondary close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                
             </div>
+            <div class="modal-body justify-content-center" id="myModalContent">
+            </div>
+
         </div>
     </div>
+</div>
 
-
-@section scripts{
+@section scripts {
     <script>
         var PostBackURL = '/Order/GetOrderDetails';
 
@@ -152,11 +149,10 @@
                         $('#myModal').modal('show');
                     },
                     error: function () {
-                        alert("Dynamic contect load failed");
+                        alert("Tải nội dung động thất bại");
                     }
                 })
             })
         })
-
     </script>
 }

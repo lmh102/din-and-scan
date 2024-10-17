@@ -1,33 +1,33 @@
 ﻿@model FoodDelivery.Models.ViewModels.OrderDetailsViewModel
 
 @{
-    ViewData["Title"] = "Confirm";
+    ViewData["Title"] = "Xác Nhận";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <br />
 <div class="row px-3">
     <div class="col-8">
-        <h2 class="text-info">Order Confirmed</h2>
+        <h2 class="text-info">Đơn Hàng Đã Được Xác Nhận</h2>
     </div>
     <div class="col-4 text-right">
-        <a asp-action="Index" asp-controller="Home" class="btn btn-success form-control">New Order</a>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-success form-control">Đơn Hàng Mới</a>
     </div>
 </div>
 
 @if (Model.Order != null)
 {
     <div style="color:maroon" class="p-3">
-        Your order has been confirmed! Please see the order summary below.
+        Đơn hàng của bạn đã được xác nhận! Vui lòng xem tóm tắt đơn hàng bên dưới.
         <br />
-        Feel free to contract us if you have any questions.
+        Hãy liên hệ với chúng tôi nếu bạn có bất kỳ câu hỏi nào.
     </div>
     <partial name="_IndividualOrderDetails" model="Model" />
 }
 else
 {
     <div class="text-danger">
-        Error... Please try again.
+        Lỗi... Vui lòng thử lại.
     </div>
 }
 
