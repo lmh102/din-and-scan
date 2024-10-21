@@ -1,16 +1,15 @@
 ﻿@model IEnumerable<ApplicationUser>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh Sách Người Dùng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <div class="row">
     <div class="col-6">
-        <h2 class="text-info">User List</h2>
+        <h2 class="text-info">Danh Sách Người Dùng</h2>
     </div>
     <div class="col-6 text-right">
-        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-info"><i class="fas fa-plus"></i> New Employee</a>
+        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-info"><i class="fas fa-plus"></i> Nhân Viên Mới</a>
     </div>
 </div>
 <br />
@@ -28,7 +27,7 @@
                 <th>
                     @Html.DisplayNameFor(m => m.PhoneNumber)
                 </th>
-                <th>Action</th>
+                <th>Hành Động</th>
             </tr>
             @foreach (var item in Model)
             {
@@ -58,6 +57,6 @@
     }
     else
     {
-        <p>No Categories</p>
+        <p>Không Có Danh Mục</p>
     }
 </div>

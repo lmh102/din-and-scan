@@ -1,12 +1,12 @@
 ﻿@model FoodDelivery.Models.ViewModels.SubCategoryAndCategoryViewModel
 @using FoodDelivery.Extensions
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Chỉnh Sửa";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <br />
-<h2 class="text-info">Edit SubCategory</h2>
+<h2 class="text-info">Chỉnh Sửa Danh Mục Phụ</h2>
 <br />
 
 <partial name="_StatusMessage" model="Model.StatusMessage" />
@@ -44,7 +44,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-5 offset-3">
-                    <partial name="_EditAndBacktoListButton" model="Model.SubCategory.Id"/>
+                    <partial name="_EditAndBacktoListButton" model="Model.SubCategory.Id" />
                 </div>
             </div>
         </form>
@@ -52,7 +52,7 @@
     <div class="col-3 offset-1">
         @if (Model.SubCategoryList.Count() > 0)
         {
-            <p>Existing SubCategories :</p>
+            <p>Các Danh Mục Phụ Hiện Có :</p>
 
             <div id="SubCategoryList">
                 <ul class="list-group"></ul>
@@ -60,7 +60,7 @@
         }
         else
         {
-            <p>Create SubCategories</p>
+            <p>Tạo Danh Mục Phụ</p>
         }
     </div>
 </div>

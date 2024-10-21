@@ -3,12 +3,12 @@
 @using FoodDelivery.Utility
 
 @{
-    ViewData["Title"] = "Menu Item Details";
+    ViewData["Title"] = "Chi Tiết Món Ăn";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <br />
-<h2 class="text-info">Menu Item Details</h2>
+<h2 class="text-info">Chi Tiết Món Ăn</h2>
 <br />
 
 
@@ -79,10 +79,10 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4">
-                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                    <a asp-action="Index" class="btn btn-success form-control">Quay Lại Danh Sách</a>
                 </div>
                 <div class="col-md-4">
-                    <button type="submit" value="Add to Cart" class="btn btn-primary form-control">Add to Cart</button>
+                    <button type="submit" value="Add to Cart" class="btn btn-primary form-control">Thêm vào Giỏ Hàng</button>
                 </div>
             </div>
         </div>
@@ -101,6 +101,6 @@
 </form>
 
 @section Scripts{
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

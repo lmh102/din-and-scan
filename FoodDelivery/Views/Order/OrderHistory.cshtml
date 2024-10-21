@@ -1,13 +1,12 @@
 ﻿@model FoodDelivery.Models.ViewModels.OrderListViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Chỉ Số";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <div class="row">
     <div class="col-6">
-        <h2 class="text-info">Order History List</h2>
+        <h2 class="text-info">Danh Sách Lịch Sử Đơn Hàng</h2>
     </div>
     <div class="col-6 text-right">
         <partial name="_CreateButtonPartial" />
@@ -35,7 +34,7 @@
                     @Html.DisplayNameFor(m => m.Orders[0].Order.OrderTotal)
                 </th>
                 <th>
-                    Total Items
+                    Tổng Số Mặt Hàng
                 </th>
                 <th>
                     @Html.DisplayNameFor(m => m.Orders[0].Order.Status)
@@ -62,7 +61,7 @@
                     </td>
                     <td>
                         @Html.DisplayFor(m => item.OrderDetails.Count)
-                    </td>    
+                    </td>
                     <td>
                         <p class="btn btn-primary">
                             <i class="far fa-clock"></i>
@@ -71,20 +70,19 @@
                     </td>
                     <td>
                         <button type="submit" class="btn btn-success ancorDetail" data-id="@item.Order.Id" data-toggle="modal">
-                            <i class="far fa-list-alt"></i> Details
+                            <i class="far fa-list-alt"></i> Chi Tiết
                         </button>
-                    </td>                    
+                    </td>
                 </tr>
             }
         </table>
         <div page-model="@Model.PagingInfo" page-classes-enabled="true" page-class="btn border" page-class-normal="btn btn-light" page-class-selected="btn btn-info active" class="btn-group float-right">
-
         </div>
         <br />
     }
     else
     {
-        <p>No Order History</p>
+        <p>Không Có Lịch Sử Đơn Hàng</p>
     }
 </div>
 
@@ -92,19 +90,18 @@
     <div class="modal-dialog-centered modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-success text-light justify-content-center">
-                <h5 class="modal-title">Order Details</h5>
+                <h5 class="modal-title">Chi Tiết Đơn Hàng</h5>
             </div>
             <div class="modal-lg justify-content-center" id="myModalContent">
-
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-secondary" style="width:20%" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-secondary" style="width:20%" data-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>
 </div>
 
-@section scripts{ 
+@section scripts {
     <script>
         var PostBackURL = '/Order/GetOrderDetails';
 
@@ -125,7 +122,7 @@
                         $('#myModal').modal('show');
                     },
                     error: function () {
-                        alert("Dynamic contect load failed");
+                        alert("Tải nội dung động thất bại");
                     }
                 })
             })
