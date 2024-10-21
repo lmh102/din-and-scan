@@ -84,10 +84,8 @@
                                                 <h6 class="my-0">@details.MenuItem.Name</h6>
                                                 <small class="text-muted">Số Lượng: @details.Count</small>
                                             </div>
-                                            <span class="text-muted">$@(details.MenuItem.Price * details.Count)</span>
-                                            @{
-                                                total += (details.MenuItem.Price * details.Count);
-                                            }
+                                            <span class="text-muted">@(details.MenuItem.Price * details.Count) VNĐ</span>
+                                            @{ total += (details.MenuItem.Price * details.Count);}
                                         </li>
                                     }
                                     @if (Model.Order.CouponCode != null)
@@ -97,12 +95,12 @@
                                                 <h6 class="my-0">Mã Giảm Giá</h6>
                                                 <small class="text-muted">Mã: @Model.Order.CouponCode</small>
                                             </div>
-                                            <span class="text-success">$@(total - Model.Order.OrderTotal)</span>
+                                            <span class="text-success">@(total - Model.Order.OrderTotal) VNĐ</span>
                                         </li>
                                     }
                                     <li class="list-group-item d-flex justify-content-between bg-light">
-                                        <small class="text-info">Tổng (USD)</small>
-                                        <span class="text-success">$@(Model.Order.OrderTotal)</span>
+                                        <small class="text-info">Total (VND)</small>
+                                        <span class="text-success">@(Model.Order.OrderTotal) VNĐ</span>
                                     </li>
                                 </ul>
                             </div>
