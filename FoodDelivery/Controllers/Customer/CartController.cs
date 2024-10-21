@@ -116,13 +116,13 @@ namespace FoodDelivery.Controllers.Customer
             var getUserId = await _unitOfWork.User.GetCurrentUser();
             var cartList = await _unitOfWork.ShoppingCart.GetShoppingCartListByUserId(getUserId.Id);
 
-            orderDetailsVM.ListCart = cartList.ToList();
+                orderDetailsVM.ListCart = cartList.ToList();
 
             orderDetailsVM.Order.PaymentStatus = StaticDetail.PaymentStatusApproved;
             orderDetailsVM.Order.OrderDate = DateTime.Now;
             orderDetailsVM.Order.UserId = claim.Value;
             orderDetailsVM.Order.Status = StaticDetail.StatusSubmitted;
-            orderDetailsVM.Order.PickUpTime = Convert.ToDateTime(orderDetailsVM.Order.PickUpDate.ToShortDateString() + " " + orderDetailsVM.Order.PickUpTime.ToShortTimeString());
+            orderDetailsVM.Order.PickUpTime = Convert.ToDateTime(orderDetailsVM.Order.PickUpDate?.ToShortDateString() + " " + orderDetailsVM.Order.PickUpTime.ToShortTimeString());
 
             List<OrderDetails> orderDetailsList = new List<OrderDetails>();
             

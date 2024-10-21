@@ -19,6 +19,7 @@ namespace FoodDelivery.Models
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         [Required]
+        [Display(Name = "Thời gian đặt")]
         public DateTime OrderDate { get; set; }
 
         [Required]
@@ -26,29 +27,32 @@ namespace FoodDelivery.Models
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:0}")]
+        [Display(Name = "Tổng giá trị")]
         public double OrderTotal { get; set; }
 
         [Required]
-        [Display(Name = "Pickup Time")]
+        [Display(Name = "Thời gian nhận")]
         public DateTime PickUpTime { get; set; }
 
         [Required]
-        [NotMapped]
-        public DateTime PickUpDate { get; set; }
+        //[NotMapped]
+        public DateTime? PickUpDate { get; set; }
 
-        [Display(Name = "Coupon Code")]
+        [Display(Name = "Mã giảm giá")]
         public string CouponCode { get; set; }
         public double CouponCodeDiscount { get; set; }
+        [Display(Name = "Trạng thái")]
         public string Status { get; set; }
         public string PaymentStatus { get; set; }
+        [Display(Name = "Ghi chú")]
         public string Comments { get; set; }
 
         [Required]
-        [Display(Name = "Pickup Name")]
+        [Display(Name = "Người đặt")]
         public string PickupName { get; set; }
 
         [Required]
-        [Display(Name = "Phone Number")]
+        [Display(Name = "SĐT")]
         public string PhoneNumber { get; set; }
         
         public string TransactionId { get; set; }

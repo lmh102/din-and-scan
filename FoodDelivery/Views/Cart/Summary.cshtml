@@ -49,7 +49,7 @@
                                         <label>Ngày</label>
                                     </div>
                                     <div class="col-9">
-                                        <input asp-for="@Model.Order.PickUpDate" id="datepicker" value="" type="text" class="form-control" />
+                                        <input asp-for="@Model.Order.PickUpDate" id="datepicker" type="date" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="row my-1">
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">
-                                        <label>Hướng Dẫn Thêm: </label>
+                                        <label>Ghi chú: </label>
                                     </div>
                                     <div class="col-9">
                                         <textarea asp-for="@Model.Order.Comments" style="height:100px;" class="form-control"></textarea>

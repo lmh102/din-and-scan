@@ -1,4 +1,5 @@
-﻿@model FoodDelivery.Models.ViewModels.OrderListViewModel
+﻿@using FoodDelivery.Utility
+@model FoodDelivery.Models.ViewModels.OrderListViewModel
 @{
     ViewData["Title"] = "Chỉ Số";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,26 +20,27 @@
         <table class="table table-striped border">
             <tr class="table-secondary">
                 <th>
-                    @Html.DisplayNameFor(m => m.Orders[0].Order.Id)
+                    Id
                 </th>
                 <th>
-                    @Html.DisplayNameFor(m => m.Orders[0].Order.PickupName)
+                    Người tạo
                 </th>
                 <th>
-                    @Html.DisplayNameFor(m => m.Orders[0].Order.ApplicationUser.Email)
+                    Email
                 </th>
                 <th>
-                    @Html.DisplayNameFor(m => m.Orders[0].Order.PickUpTime)
+                    Thời gian đặt
                 </th>
                 <th>
-                    @Html.DisplayNameFor(m => m.Orders[0].Order.OrderTotal)
+                    Tổng tiền
                 </th>
                 <th>
                     Tổng Số Mặt Hàng
                 </th>
                 <th>
-                    @Html.DisplayNameFor(m => m.Orders[0].Order.Status)
+                    Trạng thái
                 </th>
+                <th></th>
                 <th></th>
             </tr>
             @foreach (var item in Model.Orders)
@@ -72,6 +74,18 @@
                         <button type="submit" class="btn btn-success ancorDetail" data-id="@item.Order.Id" data-toggle="modal">
                             <i class="far fa-list-alt"></i> Chi Tiết
                         </button>
+                    </td>
+                    <td>
+
+                        @if (item.Order.Status.Equals(StaticDetail.StatusSubmitted))
+                        {
+                            <form method="post">
+                                <button type="submit" asp-action="OrderCancelByClient" asp-route-OrderId="@item.Order.Id" class="btn btn-danger">
+
+                                    <i class="far fa-list-alt"></i> Hủy
+                                </button>
+                            </form>
+                        }
                     </td>
                 </tr>
             }

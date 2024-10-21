@@ -22,7 +22,7 @@ namespace FoodDelivery.Controllers.Customer
         private readonly IEmailSender _emailSender;
         private readonly IUnitOfWork _unitOfWork;
 
-        private int PageSize = 1;
+        private int PageSize = 10;
 
         public OrderController(IEmailSender emailSender, IUnitOfWork unitOfWork)
         {
@@ -139,6 +139,13 @@ namespace FoodDelivery.Controllers.Customer
             await _unitOfWork.OrderServices.ChangeOrderStatusInCancel(OrderId);
 
             return RedirectToAction("ManageOrder", "Order");
+        }
+        [Authorize]
+        public async Task<IActionResult> OrderCancelByClient(int OrderId)
+        {
+            await _unitOfWork.OrderServices.ChangeOrderStatusInCancel(OrderId);
+
+            return RedirectToAction("OrderHistory", "Order");
         }
 
         [Authorize(Roles = StaticDetail.FrontDeskUser + "," + StaticDetail.ManagerUser)]
